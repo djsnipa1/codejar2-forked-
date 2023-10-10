@@ -124,6 +124,7 @@ var currentUrl = "https://www.backblaze.com/docs/cloud-storage-integrate-rclone-
 // Define a new url to open in the modal window
 var newUrl = "https://content-parser.com/markdown?url=".concat(currentUrl);
 function doTheThing() {
+  console.log("doTheThing");
   // Open the modal window with the new url
   var modalWindow = window.open(newUrl, "modal", "width=600,height=400");
 
@@ -137,9 +138,13 @@ function doTheThing() {
 function newOne() {
   // Get the div element by its id
   var contentDiv = document.getElementById("content");
-
+  console.log("newOne");
   // Make a fetch request to the other website
   fetch(newUrl).then(function (response) {
+    var contentType = response.headers.get("Content-Type");
+
+    // Log the Content-Type header value
+    console.log(contentType);
     // Check if the response is ok
     if (response.ok) {
       // Return the response as text
@@ -156,6 +161,10 @@ function newOne() {
     console.error("FETCH ERROR:", error);
   });
 }
+var button1 = document.getElementById("button1");
+var button2 = document.getElementById("button2");
+button1.addEventListener("click", doTheThing);
+button2.addEventListener("click", newOne);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -181,7 +190,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39671" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35159" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
